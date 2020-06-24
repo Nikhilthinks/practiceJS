@@ -48,3 +48,29 @@ array.sort((a, b) => {
   if (num < 0.5) return -1;
   else return 1;
 });
+
+// Monotonic Array
+
+/**
+ * @param {number[]} A
+ * @return {boolean}
+ */
+var isMonotonic = function (A) {
+  if (A.length < 2) {
+    return true;
+  }
+
+  let monotonicIncrease = true;
+  let monotonicDecrease = true;
+
+  for (let i = 0; i < A.length; i++) {
+    if (A[i - 1] < A[i]) {
+      monotonicDecrease = false;
+    }
+    if (A[i - 1] > A[i]) {
+      monotonicIncrease = false;
+    }
+  }
+
+  return monotonicDecrease || monotonicIncrease;
+};
